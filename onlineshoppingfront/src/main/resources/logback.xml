@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <appender name="APPLICATION-LOG"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.home}/logs/onlineshoppingfront.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.home}/logs/onlineshoppingfront.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>72</maxHistory>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{dd/MMM/YYYY:HH:mm:ss.SSS} [%thread] %marker %-5level %logger{36}.%M\(%line\) - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="ACCESS-LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${catalina.home}/logs/osfAccessLog.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${catalina.home}/logs/osfAccessLog.%d{yyyy-MM-dd_HH}.log</fileNamePattern>
+            <maxHistory>72</maxHistory>
+        </rollingPolicy>
+        <append>true</append>
+        <encoder>
+            <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="accessLog" level="INFO" additivity="false">
+        <appender-ref ref="ACCESS-LOG"/>
+    </logger>
+<!--    <logger name="org.springframework.data.mongodb.core.index.MongoPersistentEntityIndexResolver" level="WARN"/>-->
+    <root level="INFO">
+        <appender-ref ref="APPLICATION-LOG" />
+    </root>
+
+</configuration>
