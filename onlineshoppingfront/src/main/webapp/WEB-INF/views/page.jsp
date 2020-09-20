@@ -29,36 +29,45 @@
   <!-- Bootstrap core CSS -->
   <link href="${css}/bootstrap.min.css" rel="stylesheet">
 
+  <!-- Bootstrap theme CSS -->
+  <link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+
   <!-- Custom styles for this template -->
   <link href="${css}/myapp.css" rel="stylesheet">
 
 </head>
 
 <body>
+    <div class="wrapper">
 
-    <%@include file="./shared/navbar.jsp" %>
+        <!-- Navigation -->
+        <%@include file="./shared/navbar.jsp" %>
 
-    <c:if test="${userClickHome == true}" >
-        <%@include file="home.jsp" %>
-    </c:if>
+        <div class="content">
+            <!-- Page Content -->
+            <c:if test="${userClickHome == true}" >
+                <%@include file="home.jsp" %>
+            </c:if>
 
-    <c:if test="${userClickAbout == true}" >
-            <%@include file="about.jsp" %>
-    </c:if>
+            <c:if test="${userClickAbout == true}" >
+                    <%@include file="about.jsp" %>
+            </c:if>
 
-    <c:if test="${userClickContact == true}" >
-            <%@include file="contact.jsp" %>
-    </c:if>
+            <c:if test="${userClickContact == true}" >
+                    <%@include file="contact.jsp" %>
+            </c:if>
+        </div>
 
+        <!-- Footer -->
+        <%@include file="./shared/footer.jsp" %>
 
-    <%@include file="./shared/footer.jsp" %>
+      <!-- Bootstrap core JavaScript -->
+      <script src="${js}/shop-homepage-jquery.js"></script>
+      <script src="${js}/bootstrap.bundle.min.js"></script>
 
-  <!-- Bootstrap core JavaScript -->
-  <script src="${js}/shop-homepage-jquery.js"></script>
-  <script src="${js}/bootstrap.bundle.min.js"></script>
-
-  <!-- Own Coded JavaScript -->
-  <script src="${js}/myapp.js"></script>
+      <!-- Own Coded JavaScript -->
+      <script src="${js}/myapp.js"></script>
+  </div>
 
 </body>
 
