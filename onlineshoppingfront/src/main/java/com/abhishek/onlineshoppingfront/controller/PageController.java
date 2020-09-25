@@ -1,5 +1,7 @@
 package com.abhishek.onlineshoppingfront.controller;
 
+import com.abhishek.onlineshoppingfront.helpers.CategoryHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -8,6 +10,9 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class PageController {
 
+    @Autowired
+    private CategoryHelper categoryHelper;
+
     @RequestMapping(value = {"/", "/home", "/index"})
     public ModelAndView index() {
 
@@ -15,6 +20,7 @@ public class PageController {
         mv.addObject("greeting", "Welcome to OnlineShopping !!!");
         mv.addObject("title", "Home");
         mv.addObject("userClickHome", true);
+        mv.addObject("categories", categoryHelper.getActiveCategoryList());
         return mv;
     }
     @RequestMapping(value = "/about")
