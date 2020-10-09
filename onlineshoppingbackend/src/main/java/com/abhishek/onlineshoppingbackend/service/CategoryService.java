@@ -7,7 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -49,5 +51,10 @@ public class CategoryService {
 
         log.info("Updated Category name - {},value - {}, count - {}", name,activationValue, updatedRows);
         return updatedRows;
+    }
+
+    public Category getCategoryById(Long categoryId) {
+        Optional<Category> optionalCategory = categoryRepository.findById(categoryId);
+        return optionalCategory.orElse(null);
     }
 }

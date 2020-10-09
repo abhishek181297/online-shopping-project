@@ -43,4 +43,22 @@ public class CategoryHelper {
 //        log.info("Categories - ", categoryList);
         return categoryList;
     }
+
+    public Category getCategoryById(Long categoryId) {
+        Category category = null;
+        String url = backendServiceUrl + "/category/get/id/" + categoryId;
+        HttpEntity entity = new HttpEntity(CommonHelper.getHttpHeaders());
+        log.info("Calling backend service to get category By Id - {} - {}",categoryId, url);
+        try {
+            ResponseEntity<Category> responseEntity = restTemplate.exchange(
+                    url, HttpMethod.GET, entity, Category.class);
+            if (responseEntity.getStatusCode() == HttpStatus.OK) {
+                category = responseEntity.getBody();
+            }
+        } catch (Exception ex) {
+            log.error("Exception in getting category id - {}, url - {}",categoryId, url, ex);
+        }
+        log.info("Category id - {}, category - {}",categoryId, category);
+        return category;
+    }
 }

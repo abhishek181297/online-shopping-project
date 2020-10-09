@@ -1,22 +1,21 @@
 
 $(function() {
+    console.log(menu);
     switch(menu) {
         case 'About' :
             $('#about').addClass('active');
-//            $('#home').removeClass('active');
-//            $('#contact').removeClass('active');
-//            $('#listProducts').removeClass('active');
             break;
         case 'Contact' :
-//            $('#about').removeClass('active');
-//            $('#home').removeClass('active');
             $('#contact').addClass('active');
-//            $('#listProducts').removeClass('active');
+            break;
+        case 'All Products':
+            $('#listProducts').addClass('active');
+            break;
+        case 'Home':
+            $('#home').addClass('active');
             break;
         default:
-//        $('#about').removeClass('active');
-        $('#home').addClass('active');
-//        $('#contact').removeClass('active');
-//        $('#listProducts').removeClass('active');
+            $('#listProducts').addClass('active');
+            $('#a_sb_'+menu).addClass('active')
     }
 });

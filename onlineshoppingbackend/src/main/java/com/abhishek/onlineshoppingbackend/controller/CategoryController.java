@@ -35,12 +35,19 @@ public class CategoryController {
         return new ResponseEntity<>(categoryService.getAllCategories(), HttpStatus.OK);
     }
 
-    @GetMapping("/get/{name}")
+    @GetMapping("/get/name/{name}")
     public ResponseEntity<Category> getCategoryByName(@PathVariable(value = "name") String name) {
         if (StringUtils.isBlank(name)) {
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
         return new ResponseEntity<>(categoryService.getCategoryByName(name), HttpStatus.OK);
+    }
+
+    @GetMapping("/get/id/{id}")
+    public ResponseEntity<Category> getCategoryById(@PathVariable(value = "id") Long categoryId) {
+        Category category = categoryService.getCategoryById(categoryId);
+
+        return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
     @PostMapping("/save")
